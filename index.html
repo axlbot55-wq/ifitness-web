@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iFitness — Irish Humang-it Personal Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* --- HOVER EFFECTS --- */
+/* 1. Chat Options Hover */
+.cb-opt:hover {
+    background-color: rgba(200, 168, 75, 0.15); /* Light gold background */
+    transform: translateX(5px); /* Slide slightly right */
+    border-left: 3px solid var(--gold); /* Gold bar on left */
+    transition: all 0.3s ease;
+}
+
+/* 2. Floating Chat Button Hover */
+#chat-fab:hover {
+    background-color: var(--gold);
+    transform: scale(1.1); /* Make it slightly bigger */
+    box-shadow: 0 0 15px rgba(200, 168, 75, 0.5); /* Glow effect */
+    transition: all 0.3s ease;
+}
+/* 3. Main Buttons (like "View Programs") Hover */
+button:hover, .btn:hover {
+    filter: brightness(1.1); /* Make it slightly brighter */
+    transform: translateY(-2px); /* Lift up slightly */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+/* 4. Links Hover */
+a:hover {
+    color: var(--gold);
+    transition: color 0.3s ease;
+}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#080808;
+      --charcoal:#111;
+      --iron:#1a1a1a;
+      --steel:#242424;
+      --panel:#2c2c2c;
+      --mid:#555;
+      --muted:#888;
+      --light:#c4c4c4;
+      --white:#f4f3ef;
+      --gold:#c8a84b;
+      --gold-lt:#dfc070;
+      --gold-dk:#7a6128;
+      --green:#4a9e66;
+      --red:#a03028;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--black)}
+    ::-webkit-scrollbar-thumb{background:var(--gold-dk);border-radius:2px}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 5vw;height:68px;
+      background:rgba(8,8,8,0.93);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(200,168,75,0.13);
+    }
+    .nav-logo{
+      font-family:'Montserrat','bebas neue';font-size:1.45rem;font-weight:800;
+      letter-spacing:0.04em;color:var(--gold);text-decoration:none;
+    }
+    .nav-logo span{color:var(--white)}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+    .nav-links a{
+      text-decoration:none;color:var(--light);
+      font-size:0.7rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;
+      transition:color 0.2s;
+    }
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.3rem;border-radius:2px}
+    .nav-cta:hover{background:var(--gold-lt)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--gold);border-radius:1px;transition:0.3s}
+    #mob-nav{
+      display:none;position:fixed;inset:0;background:var(--black);z-index:190;
+      padding:5rem 2rem 2rem;flex-direction:column;gap:1.5rem;
+    }
+    #mob-nav a{font-size:1.9rem;font-weight:800;color:var(--white);text-decoration:none;letter-spacing:0.03em;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:1rem}
+    #mob-nav .mob-cta{background:var(--gold);color:var(--black)!important;text-align:center;padding:1rem;border-radius:2px;margin-top:0.5rem;font-size:0.82rem!important;letter-spacing:0.12em;text-transform:uppercase;border-bottom:none}
+
+    /* HERO */
+    #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+    .hero-bg-img{
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80') center/cover no-repeat;
+    }
+    .hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,0.93) 38%,rgba(8,8,8,0.55) 100%)}
+    .hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.3;pointer-events:none}
+    .hero-content{position:relative;z-index:2;padding:0 6vw;max-width:800px;padding-top:68px}
+    .hero-chip{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      border:1px solid rgba(200,168,75,0.45);padding:0.4rem 1rem;border-radius:100px;
+      font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);
+      margin-bottom:1.8rem;animation:fadeUp 0.8s ease both;
+    }
+    .hero-chip::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:block}
+    .hero-h1{
+      font-size:clamp(3rem,8.5vw,7rem);font-weight:900;line-height:0.92;
+      letter-spacing:-0.02em;color:var(--white);margin-bottom:1.6rem;
+      animation:fadeUp 0.8s 0.12s ease both;
+    }
+    .hero-h1 em{color:var(--gold);font-style:normal;display:block}
+    .hero-sub{font-size:0.97rem;color:rgba(196,196,196,0.82);max-width:440px;margin-bottom:2.5rem;font-weight:300;line-height:1.78;animation:fadeUp 0.8s 0.24s ease both}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.36s ease both}
+    .btn-gold{background:var(--gold);color:var(--black);padding:0.9rem 2.1rem;border:none;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.2s,transform 0.15s;display:inline-block}
+    .btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--white);padding:0.9rem 2.1rem;border:1px solid rgba(255,255,255,0.22);border-radius:2px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:border-color 0.2s,color 0.2s;display:inline-block}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+    .hero-stats{
+      position:absolute;bottom:0;left:0;right:0;z-index:2;
+      display:flex;background:rgba(20,20,20,0.92);backdrop-filter:blur(14px);
+      border-top:1px solid rgba(200,168,75,0.14);animation:fadeUp 0.8s 0.5s ease both;
+    }
+    .hero-stat{flex:1;padding:1.3rem 2vw;border-right:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:0.9rem}
+    .hero-stat:last-child{border-right:none}
+    .hs-icon{font-size:1.2rem}
+    .hs-val{font-size:1rem;font-weight:800;color:var(--gold);line-height:1}
+    .hs-lbl{font-size:0.58rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem}
+
+    /* SHARED */
+    section{padding:6rem 5vw}
+    .sec-label{font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem}
+    .sec-title{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.01em;color:var(--white);line-height:1.05;margin-bottom:1rem}
+    .sec-rule{width:40px;height:2px;background:var(--gold);margin-bottom:2rem}
+    .max{max-width:1200px;margin:0 auto}
+
+    /* ABOUT */
+    #about{background:var(--charcoal)}
+    .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block;border:1px solid rgba(200,168,75,0.12);background:var(--iron)}
+    .about-corner{position:absolute;top:-1.2rem;left:-1.2rem;width:48px;height:48px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+    .about-name{font-size:1.85rem;font-weight:800;color:var(--white);margin-bottom:0.25rem}
+    .about-role{font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+    .about-text p{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-bottom:0.9rem;font-weight:300}
+    .cred-list{display:flex;flex-direction:column;gap:0.85rem;margin-top:1.8rem}
+    .cred-item{display:flex;gap:1rem;align-items:center;background:var(--steel);border:1px solid rgba(200,168,75,0.13);border-radius:4px;padding:1rem 1.2rem;transition:border-color 0.2s}
+    .cred-item:hover{border-color:rgba(200,168,75,0.38)}
+    .cred-ico{font-size:1.2rem;flex-shrink:0}
+
+    /* PROGRAMS */
+    #programs{background:var(--black)}
+    .pt-intro{margin-bottom:2.5rem}
+    .pt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .pt-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:2.2rem 2rem;display:flex;flex-direction:column;position:relative;transition:border-color 0.25s,transform 0.22s}
+    .pt-card:hover{border-color:rgba(200,168,75,0.35);transform:translateY(-5px)}
+    .pt-card.featured{border-color:var(--gold-dk);background:linear-gradient(150deg,rgba(200,168,75,0.09),var(--iron))}
+    .pt-ribbon{position:absolute;top:-1px;right:1.5rem;background:var(--gold);color:var(--black);font-size:0.56rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.72rem;border-radius:0 0 4px 4px}
+    .pt-opt{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.45rem}
+    .pt-name{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:0.3rem}
+    .pt-sublabel{font-size:0.73rem;color:var(--muted);font-style:italic;margin-bottom:1.5rem;font-weight:300}
+    .pt-price-old{font-size:0.82rem;color:var(--mid);text-decoration:line-through;margin-bottom:0.12rem}
+    .pt-price{font-size:2.5rem;font-weight:900;color:var(--white);line-height:1;letter-spacing:-0.02em}
+    .pt-price sup{font-size:0.95rem;font-weight:700;vertical-align:super}
+    .pt-price-note{font-size:0.7rem;color:var(--muted);margin-top:0.35rem;margin-bottom:1.4rem;font-weight:300}
+    .pt-divider{height:1px;background:rgba(255,255,255,0.06);margin-bottom:1.1rem}
+    .pt-desc{font-size:0.78rem;color:var(--muted);line-height:1.72;margin-bottom:1.5rem;flex:1;font-weight:300}
+    .pt-btn{display:block;text-align:center;padding:0.8rem;border-radius:2px;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:0.2s}
+    .pt-btn-gold{background:var(--gold);color:var(--black)}
+    .pt-btn-gold:hover{background:var(--gold-lt)}
+    .pt-btn-outline{border:1px solid rgba(200,168,75,0.4);color:var(--gold)}
+    .pt-btn-outline:hover{background:rgba(200,168,75,0.08)}
+
+    /* TAEKWONDO */
+    #taekwondo{background:var(--charcoal)}
+    .tkd-banner{
+      position:relative;height:360px;border-radius:6px;overflow:hidden;
+      margin-bottom:3rem;display:flex;align-items:flex-end;
+    }
+    .tkd-banner-img{
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1400&q=80') center 30%/cover no-repeat;
+    }
+    .tkd-banner-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,rgba(8,8,8,0.25) 60%,transparent 100%)}
+    .tkd-banner-text{position:relative;z-index:2;padding:2.2rem 2.5rem}
+    .tkd-banner-text .sec-label{margin-bottom:0.4rem}
+    .tkd-banner-text h2{font-size:clamp(1.7rem,3.5vw,2.8rem);font-weight:900;color:var(--white);letter-spacing:-0.01em}
+    .tkd-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+    .tkd-left p{font-size:0.88rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem;font-weight:300}
+    .tkd-detail-list{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.8rem}
+    .tkd-detail-item{display:flex;align-items:center;gap:0.75rem;font-size:0.84rem;color:var(--light);font-weight:400}
+    .tkd-detail-item::before{content:'';width:7px;height:7px;background:var(--gold);border-radius:50%;flex-shrink:0}
+    .ie-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.4rem}
+    .ie-card{background:var(--iron);border-radius:4px;padding:1.1rem}
+    .ie-head{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.7rem}
+    .ie-head.inc{color:var(--green)}.ie-head.exc{color:var(--red)}
+    .ie-list{list-style:none;display:flex;flex-direction:column;gap:0.38rem}
+    .ie-list li{font-size:0.76rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem;font-weight:300}
+    .ie-list.inc li::before{content:'✓';color:var(--green);font-size:0.65rem;flex-shrink:0}
+    .ie-list.exc li::before{content:'✕';color:var(--red);font-size:0.65rem;flex-shrink:0}
+    .tkd-note{background:rgba(200,168,75,0.08);border-left:2px solid var(--gold);padding:0.85rem 1rem;border-radius:0 4px 4px 0;font-size:0.77rem;color:var(--light);line-height:1.6;font-weight:300}
+    .tkd-note strong{display:block;color:var(--gold);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem;font-weight:700}
+    .tkd-price-card{background:var(--iron);border:1px solid rgba(200,168,75,0.2);border-radius:6px;padding:2rem}
+    .tpc-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
+    .tpc-price{font-size:3rem;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-0.02em;margin-bottom:0.25rem}
+    .tpc-sub{font-size:0.76rem;color:var(--muted);font-weight:300}
+    .tpc-divider{height:1px;background:rgba(255,255,255,0.06);margin:1.1rem 0}
+    .tpc-row{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;margin-bottom:0.45rem}
+    .tpc-row span{color:var(--muted);font-weight:300}.tpc-row strong{color:var(--white);font-weight:700}
+    .tpc-note{background:rgba(200,168,75,0.08);border-left:2px solid var(--gold);padding:0.8rem 1rem;border-radius:0 4px 4px 0;font-size:0.76rem;color:var(--light);margin-top:1.4rem;line-height:1.6;font-weight:300}
+    .tpc-note strong{display:block;color:var(--gold);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem;font-weight:700}
+    .tkd-benefits{margin-top:1.6rem;background:var(--steel);border-radius:4px;padding:1.4rem}
+    .tkd-benefits-title{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+    .tkd-benefit-list{list-style:none;display:flex;flex-direction:column;gap:0.42rem}
+    .tkd-benefit-list li{font-size:0.78rem;color:var(--light);display:flex;align-items:center;gap:0.6rem;font-weight:300}
+    .tkd-benefit-list li::before{content:'—';color:var(--gold);flex-shrink:0;font-size:0.7rem}
+
+    /* PROCESS */
+    #process{background:var(--black)}
+    .process-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:3rem}
+    .proc-card{background:var(--iron);padding:2.8rem 2.4rem;position:relative;transition:background 0.2s;overflow:hidden}
+    .proc-card:hover{background:var(--steel)}
+    .proc-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 0.4s}
+    .proc-card:hover .proc-bg{opacity:0.07}
+    .proc-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,26,0.98),rgba(26,26,26,0.86))}
+    .proc-num{font-size:5rem;font-weight:900;line-height:1;color:rgba(200,168,75,0.5);position:absolute;top:1rem;right:1.5rem;letter-spacing:-0.04em;user-select:none}
+    .proc-inner{position:relative;z-index:2}
+    .proc-tag{font-size:1.5rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+    .proc-title{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:0.65rem}
+    .proc-body{font-size:0.82rem;color:var(--muted);line-height:1.75;font-weight:300}
+    .proc-list{list-style:none;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.32rem}
+    .proc-list li{font-size:0.78rem;color:var(--light);display:flex;align-items:center;gap:0.5rem;font-weight:400}
+    .proc-list li::before{content:'—';color:var(--gold);font-size:0.62rem;flex-shrink:0}
+    .goal-pills{display:flex;flex-wrap:wrap;gap:0.38rem;margin-top:0.85rem}
+    .goal-pill{font-size:0.62rem;font-weight:600;letter-spacing:0.06em;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);color:var(--gold);padding:0.22rem 0.6rem;border-radius:100px}
+
+    /* CONTACT */
+    #contact{background:var(--charcoal)}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 200px;gap:4px;border-radius:4px;overflow:hidden;margin-bottom:2rem}
+    .collage-cell{position:relative;overflow:hidden;background:var(--iron)}
+    .collage-cell:first-child{grid-row:1/3}
+    .collage-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;filter:brightness(0.55)}
+    .collage-cell:hover img{transform:scale(1.06);filter:brightness(0.75)}
+    .collage-cell-label{position:absolute;bottom:0;left:0;right:0;padding:0.55rem 0.75rem;background:linear-gradient(to top,rgba(8,8,8,0.85),transparent);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+    .c-items{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:2.2rem}
+    .c-item{display:flex;gap:1rem;align-items:flex-start}
+    .c-icon{width:40px;height:40px;background:var(--steel);border:1px solid rgba(200,168,75,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .c-lbl{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem}
+    .c-val{font-size:0.88rem;color:var(--white);font-weight:400}
+    .c-val a{color:var(--white);text-decoration:none}.c-val a:hover{color:var(--gold)}
+    .contact-form{background:var(--iron);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:2.2rem}
+    .cf-title{font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:1.5rem}
+    .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .cf-group{display:flex;flex-direction:column;gap:0.38rem;margin-bottom:0.9rem}
+    .cf-group label{font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+    .cf-group input,.cf-group select,.cf-group textarea{
+      background:var(--steel);border:1px solid rgba(255,255,255,0.07);
+      border-radius:2px;color:var(--white);
+      font-family:'Montserrat',sans-serif;font-size:0.84rem;font-weight:400;
+      padding:0.7rem 0.95rem;outline:none;transition:border-color 0.2s;-webkit-appearance:none;
+    }
+    .cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:var(--gold-dk)}
+    .cf-group select option{background:var(--steel)}
+    .cf-group textarea{resize:vertical;min-height:95px}
+    .cf-submit{width:100%;background:var(--gold);color:var(--black);border:none;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:1rem;cursor:pointer;transition:background 0.2s;margin-top:0.3rem}
+    .cf-submit:hover{background:var(--gold-lt)}
+
+    /* FOOTER */
+    footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);padding:2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .foot-logo{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:var(--gold);letter-spacing:0.04em}
+    .foot-logo span{color:var(--white)}
+    .foot-copy{font-size:0.66rem;color:var(--mid);font-weight:300}
+
+    /* CHATBOT */
+    #chat-fab{
+      position:fixed;bottom:2rem;right:2rem;z-index:500;
+      width:54px;height:54px;background:var(--gold);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;box-shadow:0 4px 24px rgba(200,168,75,0.4);
+      border:none;transition:transform 0.2s,box-shadow 0.2s;font-size:1.35rem;
+    }
+    #chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(200,168,75,0.55)}
+    #chat-fab .fab-close{display:none}
+    #chat-fab.open .fab-icon{display:none}
+    #chat-fab.open .fab-close{display:block}
+    #chat-fab.open{background:var(--panel)}
+    #chatbox{
+      position:fixed;bottom:6rem;right:2rem;z-index:499;
+      width:340px;max-width:calc(100vw - 2rem);
+      background:var(--iron);border:1px solid rgba(200,168,75,0.2);
+      border-radius:10px;overflow:hidden;
+      box-shadow:0 16px 64px rgba(0,0,0,0.7);
+      transform:translateY(14px) scale(0.97);opacity:0;pointer-events:none;
+      transition:transform 0.28s ease,opacity 0.28s ease;
+    }
+    #chatbox.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+    .cb-header{background:linear-gradient(135deg,var(--gold-dk),var(--gold));padding:1rem 1.3rem;display:flex;align-items:center;gap:0.8rem}
+    .cb-avatar{width:34px;height:34px;background:rgba(0,0,0,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .cb-head-info strong{display:block;font-size:0.8rem;font-weight:800;color:var(--black)}
+    .cb-head-info span{font-size:0.62rem;color:rgba(0,0,0,0.55);font-weight:500}
+    .cb-body{padding:1rem;max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:0.65rem}
+    .cb-msg{background:var(--steel);border-radius:4px 12px 12px 4px;padding:0.72rem 0.95rem;font-size:0.78rem;color:var(--light);line-height:1.6;font-weight:300;max-width:92%;white-space:pre-line}
+    .cb-msg.user-msg{background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.2);border-radius:12px 4px 4px 12px;align-self:flex-end;color:var(--white)}
+    .cb-options{display:flex;flex-direction:column;gap:0.45rem;padding:0 1rem 1rem}
+    .cb-opt{background:var(--steel);border:1px solid rgba(200,168,75,0.18);border-radius:4px;padding:0.6rem 0.9rem;font-size:0.72rem;font-weight:600;color:var(--light);cursor:pointer;transition:0.2s;text-align:left;display:flex;align-items:center;gap:0.55rem;font-family:'Montserrat',sans-serif}
+    .cb-opt:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,0.06)}
+    .cb-opt-icon{font-size:0.95rem;flex-shrink:0}
+    .cb-input-row{display:flex;gap:0.5rem;padding:0 1rem 1rem}
+    .cb-input{flex:1;background:var(--steel);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:0.78rem;padding:0.58rem 0.8rem;outline:none;transition:border-color 0.2s}
+    .cb-input:focus{border-color:var(--gold-dk)}
+    .cb-send{background:var(--gold);border:none;border-radius:4px;padding:0 0.85rem;font-size:0.95rem;cursor:pointer;transition:background 0.2s;color:var(--black)}
+    .cb-send:hover{background:var(--gold-lt)}
+    .cb-typing{display:none;padding:0.45rem 1rem;font-size:0.7rem;color:var(--muted);font-style:italic}
+    .cb-typing.show{display:block}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* RESPONSIVE */
+    @media(max-width:920px){
+      .nav-links{display:none}.hamburger{display:flex}
+      .about-grid{grid-template-columns:1fr;gap:2.5rem}
+      .about-img-wrap{max-width:320px;margin:0 auto}
+      .pt-grid{grid-template-columns:1fr;max-width:420px}
+      .tkd-layout{grid-template-columns:1fr;gap:2.5rem}
+      .process-grid{grid-template-columns:1fr}
+      .contact-wrap{grid-template-columns:1fr;gap:3rem}
+      .hero-stats{display:none}
+      .cf-row{grid-template-columns:1fr}
+      .collage{height:320px}
+      .collage-cell:first-child{grid-row:auto}
+    }
+    @media(max-width:600px){
+      section{padding:4rem 5vw}
+      .hero-h1{font-size:2.6rem}
+      #chatbox{width:calc(100vw - 1.5rem);right:0.75rem;bottom:5.5rem}
+      #chat-fab{bottom:1.2rem;right:1.2rem}
+      .ie-grid{grid-template-columns:1fr}
+    }
+      /* MERGED: Modal + Testimonials + Privacy */
+
+.modal-overlay-merged{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+.modal-overlay-merged.active{display:flex;}
+.modal-merged{background:var(--iron);padding:32px;border-radius:6px;width:100%;max-width:500px;border:1px solid rgba(200,168,75,0.2);box-shadow:0 16px 64px rgba(0,0,0,0.7);position:relative;color:var(--white);}
+.modal-close-m{position:absolute;top:16px;right:16px;background:transparent;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;padding:4px;}.modal-close-m:hover{color:var(--white);}
+.modal-merged h3{margin-bottom:16px;font-size:1.4rem;font-weight:800;color:var(--white);}
+.modal-merged p{color:var(--muted);margin-bottom:20px;font-size:0.95rem;font-weight:300;}
+.assess-opt-grid{display:grid;gap:10px;margin-bottom:20px;}
+.assess-opt{padding:12px;background:var(--steel);border:1px solid rgba(200,168,75,0.18);border-radius:4px;cursor:pointer;transition:0.2s;display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--light);font-weight:400;}
+.assess-opt:hover,.assess-opt.selected{border-color:var(--gold);background:rgba(200,168,75,0.08);}
+.assess-result{text-align:center;padding:20px 0;}
+.assess-result h4{font-size:1.5rem;margin-bottom:8px;font-weight:800;color:var(--white);}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.testimonial{background:var(--charcoal);padding:24px;border-radius:6px;border:1px solid rgba(200,168,75,0.12);transition:border-color 0.2s;}
+.testimonial:hover{border-color:rgba(200,168,75,0.3);}
+.testimonial-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--steel);}
+.testimonial-info h5{margin:0;font-size:1rem;font-weight:700;color:var(--white);}
+.testimonial-info span{font-size:0.8rem;color:var(--muted);font-weight:300;}
+.testimonial-quote{font-style:italic;color:var(--muted);line-height:1.5;font-size:0.9rem;font-weight:300;}
+.testimonial-result{margin-top:10px;font-weight:600;color:var(--gold);font-size:0.82rem;}
+.privacy-section{margin-top:2rem;padding:1.5rem;background:var(--steel);border-radius:4px;border:1px solid rgba(200,168,75,0.1);}
+.privacy-section h4{font-size:0.85rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;}
+.privacy-section p{font-size:0.78rem;color:var(--muted);line-height:1.7;font-weight:300;}
+.hidden{display:none;}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">i<span>Fitness</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#taekwondo">Taekwondo</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Book Session</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMob(this)" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mob-nav">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#programs" onclick="closeMob()">Programs</a>
+  <a href="#taekwondo" onclick="closeMob()">Taekwondo</a>
+  <a href="#process" onclick="closeMob()">How It Works</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#contact" onclick="closeMob()" class="mob-cta">Book a Session</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <span class="hero-chip">Certified Gold's Gym Physical Trainer · Certified Taekwondo Black Belt </span>
+    <h1 class="hero-h1">Train Hard.<br><em>Transform.</em></h1>
+    <p class="hero-sub">Elite 1-on-1 personal training and Taekwondo coaching in Mandaluyong City. Programs built around your goals — real results, real commitment.</p>
+    <div class="hero-btns">
+      <a href="#programs" class="btn-gold">View Programs</a>
+      <a href="#contact" class="btn-ghost">Free Consultation</a>
+      <button onclick="openLeadModal()" style="background:transparent;color:var(--white);padding:0.9rem 2.1rem;border:1px solid rgba(255,255,255,0.22);border-radius:2px;font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;display:inline-block;" onmouseover="this.style.borderColor="var(--gold)";this.style.color="var(--gold)"" onmouseout="this.style.borderColor="rgba(255,255,255,0.22)";this.style.color="var(--white)"">Download Free 7-Day Plan</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hs-icon"></span>
+      <div><div class="hs-val">Personalized Workouts</div><div class="hs-lbl"></div></div>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-icon"></span>
+      <div><div class="hs-val">Real-time Adjustments</div><div class="hs-lbl"></div></div>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-icon"></span>
+      <div><div class="hs-val">Enhanced Motivation</div><div class="hs-lbl"></div></div>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-icon"></span>
+      <div><div class="hs-val">Quicker Results</div><div class="hs-lbl"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="max">
+    <div class="about-grid reveal">
+      <div class="about-img-wrap">
+        <!-- Replace src with your actual photo. Recommended: close-up of black belt or training space shot -->
+        <img class="about-img"
+          src=assets/taekwondo-close-up.jpg
+          alt="Taekwondo Black Belt"
+          onerror="this.style.background='var(--iron)';this.removeAttribute('src')"
+        />
+        <div class="about-corner"></div>
+        <div class="about-belt-badge">
+          <strong><br></strong>
+          <span></span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="sec-label">Your Coach</p>
+        <h2 class="sec-title">Irish<br>Humang-it</h2>
+        <div class="sec-rule"></div>
+        <p class="about-role">Personal Trainer · Taekwondo Instructor</p>
+        <p>Irish brings the discipline of a Black Belt martial artist and the precision of a certified fitness professional into every session. Her coaching philosophy: build sustainable strength, real-world athleticism, and lasting lifestyle change.</p>
+        <p>Whether you're stepping into training for the first time or breaking through a plateau — every program is built around <em>you</em>.</p>
+        <div class="cred-list">
+          <div class="cred-item">
+            <span class="cred-ico"></span>
+            <div class="cred-text">
+              <strong>Taekwondo Black Belt</strong>
+              <div style="font-size: 0.85rem; margin-top: 4px; color: var(--light);">Philippine Taekwondo Association of the Philippines</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <span class="cred-ico"></span>
+            <div class="cred-text">
+              <strong>Certified Physical Trainer</strong>
+              <div style="font-size: 0.85rem; margin-top: 4px; color: var(--light);">Gold's Gym Philippines</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMS — PERSONAL TRAINING ══ -->
+<section id="programs">
+  <div class="max">
+    <div class="pt-intro reveal">
+      <p class="sec-label">Programs</p>
+      <h2 class="sec-title">1-on-1 Personal Training</h2>
+      <div class="sec-rule"></div>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:500px;margin-bottom:2.5rem;font-weight:300">Fully customized sessions built around your goals and schedule. Choose the package that fits your commitment.</p>
+    </div>
+    <div class="pt-grid">
+
+      <div class="pt-card reveal">
+        <p class="pt-opt">Option A</p>
+        <p class="pt-name">6 Sessions Package</p>
+        <p class="pt-sublabel">Trial · Flexible Entry</p>
+        <div class="pt-price"><sup>₱</sup>1,500</div>
+        <div class="pt-price-note">per session</div>
+        <div class="pt-divider"></div>
+        <p class="pt-desc">Perfect for first-time clients who want to experience personalized coaching before committing to a full program.</p>
+        <a href="#contact" class="pt-btn pt-btn-outline" onclick="prefillForm('Personal Training — 6 Sessions (Trial)')">Start Now →</a>
+      </div>
+
+      <div class="pt-card featured reveal">
+        <div class="pt-ribbon">Ideal for Beginners</div>
+        <p class="pt-opt">Option B</p>
+        <p class="pt-name">12 Sessions Package</p>
+        <p class="pt-sublabel">Build a Foundation</p>
+        <div class="pt-price-old">₱18,000</div>
+        <div class="pt-price"><sup>₱</sup>14,400</div>
+        <div class="pt-price-note">total · save ₱3,600</div>
+        <div class="pt-divider"></div>
+        <p class="pt-desc">Ideal for beginners building healthy habits, learning proper form, and starting their journey with expert guidance.</p>
+        <a href="#contact" class="pt-btn pt-btn-gold" onclick="prefillForm('Personal Training — 12 Sessions')">Start Now →</a>
+      </div>
+
+      <div class="pt-card reveal">
+        <div class="pt-ribbon" style="background:var(--gold-dk);color:var(--white)">Best Value</div>
+        <p class="pt-opt">Option C</p>
+        <p class="pt-name">24 Sessions Package</p>
+        <p class="pt-sublabel">Long-Term Transformation</p>
+        <div class="pt-price-old">₱36,000</div>
+        <div class="pt-price"><sup>₱</sup>28,300</div>
+        <div class="pt-price-note">total · save ₱7,700</div>
+        <div class="pt-divider"></div>
+        <p class="pt-desc">The premier package for clients committed to real, lasting results. Maximum sessions, maximum transformation.</p>
+        <a href="#contact" class="pt-btn pt-btn-outline" onclick="prefillForm('Personal Training — 24 Sessions')">Start Now →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TAEKWONDO ══ -->
+<section id="taekwondo">
+  <div class="max">
+    <div class="tkd-banner reveal">
+      <div class="tkd-banner-img"></div>
+      <div class="tkd-banner-overlay"></div>
+      <div class="tkd-banner-text">
+        <p class="sec-label">Specialty Program</p>
+        <h2>Taekwondo Children<br>Home Class</h2>
+      </div>
+    </div>
+    <div class="tkd-layout reveal">
+      <div class="tkd-left">
+        <p>This program is ideal for parents who want their children to learn Taekwondo through private 1-on-1 home training — with the full attention of a certified Black Belt coach in a safe, familiar environment.</p>
+        <div class="tkd-detail-list">
+          <div class="tkd-detail-item">₱1,800 per session, per student</div>
+          <div class="tkd-detail-item">Minimum commitment: 3 months</div>
+          <div class="tkd-detail-item">Schedule: Every weekend only</div>
+        </div>
+        <div class="ie-grid">
+          <div class="ie-card">
+            <p class="ie-head inc">Inclusions</p>
+            <ul class="ie-list inc">
+              <li>Certified Black Belt Coach</li>
+              <li>Assistant Black Belt</li>
+              <li>Taekwondo equipment</li>
+            </ul>
+          </div>
+          <div class="ie-card">
+            <p class="ie-head exc">Exclusions</p>
+            <ul class="ie-list exc">
+              <li>Uniform (dobok)</li>
+              <li>Sparring gear</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tkd-note">
+          <strong>Group Option</strong>
+          For groups of 4–6 students, training will be conducted in an exclusive training gym.
+        </div>
+      </div>
+      <div>
+        <div class="tkd-price-card">
+          <p class="tpc-label">3-Month Total Investment</p>
+          <div class="tpc-price">₱21,600</div>
+          <p class="tpc-sub">per student · 3 months</p>
+          <div class="tpc-divider"></div>
+          <div class="tpc-row"><span>Per session</span><strong>₱1,800</strong></div>
+          <div class="tpc-row"><span>Schedule</span><strong>Weekends only</strong></div>
+          <div class="tpc-row"><span>Min. commitment</span><strong>3 months</strong></div>
+          <div style="margin-top:1.4rem">
+            <a href="#contact" class="btn-gold" style="display:block;text-align:center;font-size:0.7rem" onclick="prefillForm('Taekwondo Children Home Class')">Enroll Your Child →</a>
+          </div>
+          <p style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.75rem;font-weight:300">Slots are limited — contact us to check availability.</p>
+          <div class="tpc-note">
+            <strong>Group Option</strong>
+            4–6 students: training conducted in an exclusive training gym.
+          </div>
+        </div>
+        <div class="tkd-benefits">
+          <p class="tkd-benefits-title">What Your Child Gains</p>
+          <ul class="tkd-benefit-list">
+            <li>Discipline, focus & respect</li>
+            <li>Physical fitness & coordination</li>
+            <li>Self-defense fundamentals</li>
+            <li>Confidence & resilience</li>
+            <li>Belt progression pathway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section id="process">
+  <div class="max">
+    <div class="reveal">
+      <p class="sec-label">The iFitness Method</p>
+      <h2 class="sec-title">How It Works</h2>
+      <div class="sec-rule"></div>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:500px;margin-bottom:0;font-weight:300">A structured onboarding process ensures your program is safe, personalized, and set up for results from day one.</p>
+    </div>
+    <div class="process-grid">
+
+      <div class="proc-card reveal">
+        <div class="proc-bg" style="background-image:url('https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80')"></div>
+        <div class="proc-overlay"></div>
+        <div class="proc-num">01</div>
+        <div class="proc-inner">
+          <p class="proc-tag">Step 1</p>
+          <h3 class="proc-title">Pre-Screening & PAR-Q</h3>
+          <p class="proc-body">Before training begins, every client completes a Physical Activity Readiness Questionnaire (PAR-Q) to identify any health conditions and ensure your program is built safely and precisely for your body.</p>
+        </div>
+      </div>
+
+      <div class="proc-card reveal">
+        <div class="proc-bg" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80')"></div>
+        <div class="proc-overlay"></div>
+        <div class="proc-num">02</div>
+        <div class="proc-inner">
+          <p class="proc-tag">Step 2</p>
+          <h3 class="proc-title">Initial Consultation</h3>
+          <p class="proc-body">A 30-minute session — in person or via video call — to understand your goals, lifestyle, and training history. We build your customized plan from the ground up.</p>
+        </div>
+      </div>
+
+      <div class="proc-card reveal">
+        <div class="proc-bg" style="background-image:url('https://images.unsplash.com/photo-1550345332-09e3ac987658?w=800&q=80')"></div>
+        <div class="proc-overlay"></div>
+        <div class="proc-num">03</div>
+        <div class="proc-inner">
+          <p class="proc-tag">Step 3</p>
+          <h3 class="proc-title">Baseline Measurements & Goal Setting</h3>
+          <p class="proc-body">We establish your starting point across key metrics:</p>
+          <ul class="proc-list">
+            <li>Body weight & height</li>
+            <li>Body fat percentage</li>
+            <li>Resting heart rate</li>
+            <li>Training history assessment</li>
+          </ul>
+          <div class="goal-pills">
+            <span class="goal-pill">Fat Loss</span>
+            <span class="goal-pill">Muscle Gain</span>
+            <span class="goal-pill">Strength</span>
+            <span class="goal-pill">General Fitness</span>
+            <span class="goal-pill">Injury Rehab</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-card reveal">
+        <div class="proc-bg" style="background-image:url('https://images.unsplash.com/photo-1487956382158-bb926046304a?w=800&q=80')"></div>
+        <div class="proc-overlay"></div>
+        <div class="proc-num">04</div>
+        <div class="proc-inner">
+          <p class="proc-tag">Step 4</p>
+          <h3 class="proc-title">Final Onboarding & First Session</h3>
+          <p class="proc-body">You're ready. We finalize everything before your first training day:</p>
+          <ul class="proc-list">
+            <li>Signed client agreements</li>
+            <li>Approved customized program</li>
+            <li>Payment confirmation</li>
+          </ul>
+          <a href="#contact" class="btn-gold" style="display:inline-block;margin-top:1.4rem;font-size:0.68rem;padding:0.72rem 1.5rem">Start the Process →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="max">
+    <div class="reveal">
+      <p class="sec-label">Success Stories</p>
+      <h2 class="sec-title">Real Clients. Real Results.</h2>
+      <div class="sec-rule"></div>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:500px;margin-bottom:2.5rem;font-weight:300;">Real clients. Real commitment. Real results.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h5>Mark S.</h5>
+            <span>Manila | Personal Training</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Irish structured my sessions perfectly. The combination of strength and conditioning pushed me past my plateau without burnout."</p>
+        <div class="testimonial-result">Lost 18 lbs in 10 weeks | Taekwondo + Strength</div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Client" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h5>Angela R.</h5>
+            <span>Mandaluyong | 12-Session Package</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"As a complete beginner, I was nervous. Irish made every step clear, tracked my progress weekly, and adjusted everything based on how I felt."</p>
+        <div class="testimonial-result">Gained 6 lbs lean muscle | Improved posture & energy</div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-header">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Client" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h5>David L.</h5>
+            <span>Parent | Children's Taekwondo</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">"My son's focus at school improved dramatically after 2 months of weekend training. The discipline carries over to everything he does."</p>
+        <div class="testimonial-result">Improved focus & coordination | White to Yellow Belt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="max">
+    <div class="contact-wrap">
+      <div class="reveal">
+        <p class="sec-label">Get in Touch</p>
+        <h2 class="sec-title">Ready to Begin?</h2>
+        <div class="sec-rule"></div>
+        <p style="color:var(--muted);font-size:0.87rem;line-height:1.78;max-width:380px;margin-bottom:1.8rem;font-weight:300">Book a free consultation or ask about packages. We'll respond within 24 hours.</p>
+
+        <!-- Photo collage -->
+        <!-- REPLACE these image src URLs with your own real photos -->
+        <div class="collage">
+          <div class="collage-cell">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=75" alt="Gym" loading="lazy"/>
+            <div class="collage-cell-label"></div>
+          </div>
+          <div class="collage-cell">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=75" alt="Weights" loading="lazy"/>
+            <div class="collage-cell-label"></div>
+          </div>
+          <div class="collage-cell">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=75" alt="Taekwondo" loading="lazy"/>
+            <div class="collage-cell-label"></div>
+          </div>
+        </div>
+
+        <div class="c-items">
+          <div class="c-item">
+            <div class="c-icon">📧</div>
+            <div>
+              <p class="c-lbl">Email</p>
+              <p class="c-val"><a href="mailto:irishchumangit@gmail.com">irishchumangit@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <p class="c-lbl">Location</p>
+              <p class="c-val">Twin Oaks Place, Mandaluyong City</p>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📞</div>
+            <div>
+              <p class="c-lbl">Contact Number</p>
+              <p class="c-val"><a href="tel:09764669998">0976 466 9998</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <p class="cf-title">SEND AN INQUIRY</p>
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>First Name</label>
+            <input type="text" id="f-fname" placeholder="Juan">
+          </div>
+          <div class="cf-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="dela Cruz">
+          </div>
+        </div>
+        <div class="cf-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+        <div class="cf-group">
+          <label>Contact Number</label>
+          <input type="tel" placeholder="09XX XXX XXXX">
+        </div>
+        <div class="cf-group">
+          <label>Program of Interest</label>
+          <select id="f-program">
+            <option value="">Select a program…</option>
+            <option>Personal Training — 6 Sessions (Trial)</option>
+            <option>Personal Training — 12 Sessions</option>
+            <option>Personal Training — 24 Sessions</option>
+            <option>Taekwondo Children Home Class</option>
+            <option>Free Initial Consultation</option>
+          </select>
+        </div>
+        <div class="cf-group">
+          <label>Message (Optional)</label>
+          <textarea id="f-message" placeholder="Tell us about your goals or any questions…"></textarea>
+        </div>
+                  <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:0.9rem;font-size:0.72rem;color:var(--muted);font-weight:300;"><input type="checkbox" id="dpa-form" required style="margin-top:3px;accent-color:var(--gold);"><label for="dpa-form">I agree to receive fitness updates & offers via SMS/email. Unsubscribe anytime. (Compliant with PH Data Privacy Act 2012)</label></div>
+          <button class="cf-submit" onclick="submitForm(this)">Book My Session</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <div class="privacy-section">
+          <h4>🔒 Data Privacy Notice</h4>
+          <p>Your personal information is collected solely for the purpose of fitness consultation, program enrollment, and service delivery. We comply with the <strong style="color:var(--light);">Republic Act No. 10173 (Data Privacy Act of 2012)</strong> of the Philippines. Your data will never be sold, shared, or distributed to third parties without your explicit consent. You may request access, correction, or deletion of your data at any time by contacting irishchumangit@gmail.com.</p>
+          <button onclick="this.nextElementSibling.classList.toggle("hidden");this.textContent=this.textContent==="Read Full Policy"?"Hide Policy":"Read Full Policy"" style="background:transparent;border:1px solid rgba(200,168,75,0.3);color:var(--gold);padding:0.4rem 0.9rem;border-radius:2px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;margin-top:0.7rem;font-family:Montserrat,sans-serif;transition:0.2s;">Read Full Policy</button>
+          <div class="hidden" style="margin-top:1rem;font-size:0.74rem;color:var(--muted);line-height:1.8;font-weight:300;">
+            <p><strong style="color:var(--light);">Data Controller:</strong> Irish Humang-it (iFitness Personal Training)</p>
+            <p><strong style="color:var(--light);">Data Protection Officer:</strong> Irish Humang-it — irishchumangit@gmail.com</p>
+            <p><strong style="color:var(--light);">Purpose of Processing:</strong> Client onboarding, program customization, scheduling, progress tracking, and marketing communications (opt-in only).</p>
+            <p><strong style="color:var(--light);">Data Retention:</strong> Client data is retained for the duration of the training engagement plus 12 months for follow-up, after which it is securely deleted unless you consent to longer retention.</p>
+            <p><strong style="color:var(--light);">Your Rights:</strong> Under RA 10173, you have the right to access, correct, suspend, or withdraw your personal data. To exercise these rights, email irishchumangit@gmail.com with "Data Privacy Request" in the subject line.</p>
+          </div>
+        </div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-logo">i<span>Fitness</span></div>
+  <p class="foot-copy">© 2025 iFitness · Irish Humang-it Personal Training · Mandaluyong City, Philippines</p>
+</footer>
+
+<!-- ══ CHATBOT FAB ══ -->
+<button id="chat-fab" onclick="toggleChat()" aria-label="Chat with us">
+  <span class="fab-icon">💬</span>
+  <span class="fab-close" style="color:var(--white);font-size:1rem">✕</span>
+</button>
+
+<div id="chatbox">
+  <div class="cb-header">
+    <div class="cb-avatar">💪</div>
+    <div class="cb-head-info">
+      <strong>iFitness Assistant</strong>
+      <span>Usually replies within minutes</span>
+    </div>
+  </div>
+  <div class="cb-body" id="cb-messages">
+    <div class="cb-msg">Hi there! 👋 Welcome to iFitness. I'm here to help. What are you interested in?</div>
+  </div>
+  <div class="cb-options" id="cb-options">
+    <button class="cb-opt" onclick="chatSelect('Personal Training')"><span class="cb-opt-icon">🏋️</span> Personal Training</button>
+    <button class="cb-opt" onclick="chatSelect('Taekwondo for Kids')"><span class="cb-opt-icon">🥋</span> Taekwondo for Kids</button>
+    <button class="cb-opt" onclick="chatSelect('Pricing & Packages')"><span class="cb-opt-icon">💰</span> Pricing & Packages</button>
+    <button class="cb-opt" onclick="chatSelect('Free Consultation')"><span class="cb-opt-icon">📅</span> Free Consultation</button>
+    <button class="cb-opt" onclick="chatSelect('Other')"><span class="cb-opt-icon">💬</span> Ask Something Else</button>
+  </div>
+  <div class="cb-typing" id="cb-typing">Irish is typing…</div>
+  <div class="cb-input-row" id="cb-input-row" style="display:none">
+    <input class="cb-input" id="cb-input" type="text" placeholder="Type your message…" onkeydown="if(event.key==='Enter')sendChatMsg()">
+    <button class="cb-send" onclick="sendChatMsg()">➤</button>
+  </div>
+</div>
+
+<script>
+/* ── Mobile Nav ── */
+function toggleMob(btn){
+  const nav=document.getElementById('mob-nav');
+  nav.style.display=nav.style.display==='flex'?'none':'flex';
+}
+function closeMob(){document.getElementById('mob-nav').style.display='none'}
+
+/* ── Scroll Reveal ── */
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.09});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+/* ── Prefill Form ── */
+function prefillForm(program){
+  setTimeout(()=>{
+    const sel=document.getElementById('f-program');
+    if(!sel)return;
+    for(let i=0;i<sel.options.length;i++){
+      if(sel.options[i].text===program){sel.selectedIndex=i;break}
+    }
+  },350);
+}
+
+/* ── Form Submit ── */
+function submitForm(btn){
+  btn.textContent='Message Sent ✓';
+  btn.style.background='var(--green)';
+  btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Book My Session';btn.style.background='';btn.disabled=false},3500);
+}
+
+/* ── Chatbot ── */
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-fab').classList.toggle('open',chatOpen);
+  document.getElementById('chatbox').classList.toggle('open',chatOpen);
+}
+
+const chatData={
+  'Personal Training':{
+    msg:"Great choice! 💪 We offer three PT packages:\n\n• 6 Sessions (Trial) — ₱1,500/session\n•₱14,400/12 sessions\n•₱28,300/24 sessions)\n\nAll sessions are fully 1-on-1 and customized. Fill-out the form to start! ",
+    program:'Personal Training — 12 Sessions',
+    next:['Book Free Consultation','More About Pricing','Go Back']
+  },
+  'Taekwondo for Kids':{
+    msg:"Perfect! 🥋 Our Taekwondo Children Home Class:\n\n• ₱1,800/session per student\n• Weekends only\n• 3-month minimum (₱21,600 total)\n• Includes certified Black Belt coach + assistant\n\nIdeal for kids who want discipline and self-defense at home!",
+    program:'Taekwondo Children Home Class',
+    next:['Enroll Now','More Questions','Go Back']
+  },
+  'Pricing & Packages':{
+    msg:"Here's a quick overview:\n\n🏋️ Personal Training:\n• 6 Sessions — ₱1,500/session\n• 12 Sessions — ₱14,400 (save ₱3,600)\n• 24 Sessions — ₱28,300 (save ₱7,700)\n\n🥋 Taekwondo Kids Class:\n• ₱21,600 for 3 months\n\nWould you like to get started?",
+    program:'',
+    next:['Book Free Consultation','Personal Training','Taekwondo for Kids']
+  },
+  'Free Consultation':{
+    msg:"We'd love to meet you! 📅 A free 30-minute consultation (in person or video call) helps us understand your goals and build your plan.\n\nFill in the inquiry form below and we'll reach out to schedule!",
+    program:'Free Initial Consultation',
+    next:['Take Me to the Form','Ask Something Else']
+  },
+  'Other':{msg:"Of course! Feel free to type your question below and Irish will get back to you within 24 hours. ✨",program:'',next:null},
+  'Book Free Consultation':{msg:"Just fill out the inquiry form on this page and we'll be in touch within 24 hours. 📅",program:'Free Initial Consultation',next:['Got it, thanks!']},
+  'More About Pricing':{msg:"• 6 sessions: ₱1,500/session (trial)\n• 12 sessions: ₱14,400 total\n• 24 sessions: ₱28,300 total\n\nAll packages include a fully customized 1-on-1 program.",program:'',next:['Book Now','Go Back']},
+  'Enroll Now':{msg:"Awesome! 🥋 Please fill in the inquiry form and we'll reach out to confirm your slot and schedule.",program:'Taekwondo Children Home Class',next:['Got it!']},
+  'Take Me to the Form':{msg:"Scroll to the 'Get in Touch' section — we've pre-selected 'Free Consultation' for you. 👇",program:'Free Initial Consultation',next:['Got it, thanks!']},
+  'More Questions':{msg:"Sure! Type your question below or scroll up to the Taekwondo section for full details.",program:'',next:null},
+  'Ask Something Else':{msg:"Sure! Type your question below and we'll get back to you within 24 hours.",program:'',next:null},
+  'Book Now':{msg:"Fill in the inquiry form below and we'll reach out shortly! 💪",program:'Personal Training — 24 Sessions',next:['Got it!']},
+  'Go Back':{msg:"No problem! What else can I help you with?",program:'',next:['Personal Training','Taekwondo for Kids','Pricing & Packages','Free Consultation']},
+  'Got it!':{msg:"You're welcome! We look forward to training with you. 💪",program:'',next:null},
+  'Got it, thanks!':{msg:"You're welcome! See you soon. 💪",program:'',next:null},
+};
+
+function chatSelect(option){
+  const data=chatData[option]||{msg:"Please fill in the contact form below and we'll be in touch.",program:'',next:null};
+  addUserMsg(option);
+  showTyping(()=>{
+    addBotMsg(data.msg);
+    if(data.program)prefillForm(data.program);
+    const opts=document.getElementById('cb-options');
+    const inputRow=document.getElementById('cb-input-row');
+    if(data.next){
+      opts.innerHTML=data.next.map(n=>`<button class="cb-opt" onclick="chatSelect('${n.replace(/'/g,"\\'")}')"><span class="cb-opt-icon">›</span>${n}</button>`).join('');
+      opts.style.display='flex';inputRow.style.display='none';
+    }else{
+      opts.style.display='none';inputRow.style.display='flex';
+      document.getElementById('cb-input').focus();
+    }
+  });
+}
+
+function addUserMsg(txt){
+  const el=document.createElement('div');
+  el.className='cb-msg user-msg';el.textContent=txt;
+  document.getElementById('cb-messages').appendChild(el);scrollCb();
+}
+function addBotMsg(txt){
+  const el=document.createElement('div');
+  el.className='cb-msg';el.textContent=txt;
+  document.getElementById('cb-messages').appendChild(el);scrollCb();
+}
+function scrollCb(){const m=document.getElementById('cb-messages');m.scrollTop=m.scrollHeight}
+function showTyping(cb){
+  const t=document.getElementById('cb-typing');
+  t.classList.add('show');
+  setTimeout(()=>{t.classList.remove('show');cb()},850);
+}
+function sendChatMsg(){
+  const input=document.getElementById('cb-input');
+  const msg=input.value.trim();if(!msg)return;
+  addUserMsg(msg);input.value='';
+  showTyping(()=>{
+    addBotMsg("Thanks! We've noted your message. Irish will get back to you within 24 hours. You can also fill in the form below for a faster response. 📩");
+    const f=document.getElementById('f-message');
+    if(f&&!f.value)f.value=msg;
+  });
+}
+
+
+/* MERGED: Lead Magnet */
+function openLeadModal(){document.getElementById("leadModal").classList.add("active");}
+function closeLeadModal(){document.getElementById("leadModal").classList.remove("active");}
+function handleLeadMagnet(){alert("Success! 7-Day Plan sent to email.");closeLeadModal();}
+/* MERGED: Assessment */
+function openAssessmentModal(){document.getElementById("assessmentModal").classList.add("active");}
+function closeAssessmentModal(){document.getElementById("assessmentModal").classList.remove("active");}
+let assScore=0;
+function selectAssessment(el,val){document.querySelectorAll(".assess-opt").forEach(function(o){o.classList.remove("selected")});el.classList.add("selected");assScore=val;}
+function submitAssessment(){var email=document.getElementById("assessEmail");if(!email||!email.value||!assScore){alert("Select option and enter email");return}document.getElementById("assessmentFormDiv").classList.add("hidden");document.getElementById("assessmentResultDiv").classList.remove("hidden");document.getElementById("scoreVal").textContent=assScore;var msgs={3:"You are already active! Advanced conditioning and sport-specific metrics.",2:"Solid baseline! Targeted mobility and strength work.",1:"Perfect starting point. Safe movement patterns and habit building."};document.getElementById("scoreMsg").textContent=msgs[assScore]||"Lets get started";}
+/* MERGED: Click outside to close */
+document.addEventListener("click",function(e){if(e.target.classList.contains("modal-overlay-merged")&&e.target.classList.contains("active")){e.target.classList.remove("active")}});
+/* MERGED: Exit Intent */
+var popupShown=false;
+function showExitPopup(){if(!popupShown){openLeadModal();popupShown=true;}}
+document.addEventListener("mouseleave",function(e){if(e.clientY<10)showExitPopup()});
+setTimeout(showExitPopup,60000);
+</script>
+<div class="modal-overlay-merged" id="leadModal">
+  <div class="modal-merged">
+    <button class="modal-close-m" onclick="closeLeadModal()">&times;</button>
+    <h3>📖 Free 7-Day Beginner Home Workout Plan</h3>
+    <p>Enter your details to receive your customized plan instantly. No equipment needed — just 15–20 minutes/day.</p>
+    <div style="background:var(--steel);border-radius:4px;padding:1rem;margin-bottom:1.5rem;font-size:0.78rem;line-height:1.8;">
+      <strong style="color:var(--gold);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">📋 Preview the Plan</strong>
+      <div style="color:var(--muted);font-weight:300;">
+        <strong style="color:var(--light);">Day 1:</strong> Warm-up stretches + 20 jumping jacks, 10 squats, 10 wall push-ups (3 rounds)<br>
+        <strong style="color:var(--light);">Day 2:</strong> Active recovery — 20 min brisk walk or light jog<br>
+        <strong style="color:var(--light);">Day 3:</strong> Core circuit — 15s plank, 10 crunches, 10 leg raises (3 rounds)<br>
+        <strong style="color:var(--light);">Day 4:</strong> Upper body — 10 push-ups (any variation), 10 arm circles x3, shoulder taps<br>
+        <strong style="color:var(--light);">Day 5:</strong> Lower body — 12 squats, 10 lunges each leg, 20 calf raises (3 rounds)<br>
+        <strong style="color:var(--light);">Day 6:</strong> Cardio mix — 30s high knees, 30s rest x8, plus 10 min cool-down stretch<br>
+        <strong style="color:var(--light);">Day 7:</strong> Full body review — repeat Day 1, aim for +2 reps!
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); handleLeadMagnet();">
+      <div class="cf-group"><label>Full Name</label><input type="text" placeholder="Juan dela Cruz" required style="background:var(--steel);border:1px solid rgba(255,255,255,0.07);border-radius:2px;color:var(--white);font-family:Montserrat,sans-serif;font-size:0.84rem;padding:0.7rem 0.95rem;outline:none;"></div>
+      <div class="cf-group"><label>Verified Email</label><input type="email" placeholder="you@email.com" required style="background:var(--steel);border:1px solid rgba(255,255,255,0.07);border-radius:2px;color:var(--white);font-family:Montserrat,sans-serif;font-size:0.84rem;padding:0.7rem 0.95rem;outline:none;"></div>
+      <div class="cf-group"><label>Mobile Number</label><input type="tel" placeholder="09XX XXX XXXX" required style="background:var(--steel);border:1px solid rgba(255,255,255,0.07);border-radius:2px;color:var(--white);font-family:Montserrat,sans-serif;font-size:0.84rem;padding:0.7rem 0.95rem;outline:none;"></div>
+      <div class="cf-group"><label>Location / Barangay</label><input type="text" placeholder="e.g. Brgy. Addition, Mandaluyong" required style="background:var(--steel);border:1px solid rgba(255,255,255,0.07);border-radius:2px;color:var(--white);font-family:Montserrat,sans-serif;font-size:0.84rem;padding:0.7rem 0.95rem;outline:none;"></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:1rem;font-size:0.72rem;color:var(--muted);font-weight:300;">
+        <input type="checkbox" id="dpa2" required style="margin-top:3px;accent-color:var(--gold);">
+        <label for="dpa2">I agree to receive fitness updates & offers via SMS/email. Unsubscribe anytime. (DPA 2012)</label>
+      </div>
+      <button type="submit" style="width:100%;background:var(--gold);color:var(--black);border:none;border-radius:2px;font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:1rem;cursor:pointer;transition:background 0.2s;">Download Free Plan</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay-merged" id="assessmentModal">
+  <div class="modal-merged">
+    <button class="modal-close-m" onclick="closeAssessmentModal()">&times;</button>
+    <div id="assessmentFormDiv">
+      <h3>📊 Free Body & Lifestyle Assessment</h3>
+      <p>Select the option that best describes your current status:</p>
+      <div class="assess-opt-grid">
+        <div class="assess-opt" onclick="selectAssessment(this, 3)">🔥 Active & Looking to Optimize</div>
+        <div class="assess-opt" onclick="selectAssessment(this, 2)">⚖️ Sedentary Job, Mild Activity</div>
+        <div class="assess-opt" onclick="selectAssessment(this, 1)">🛋️ Mostly Inactive / Starting Fresh</div>
+      </div>
+      <div class="cf-group" style="margin-top:16px;">
+        <label>Email to receive results & guide</label>
+        <input type="email" placeholder="you@email.com" required id="assessEmail" style="background:var(--steel);border:1px solid rgba(255,255,255,0.07);border-radius:2px;color:var(--white);font-family:Montserrat,sans-serif;font-size:0.84rem;padding:0.7rem 0.95rem;outline:none;">
+      </div>
+      <button onclick="submitAssessment()" style="width:100%;background:var(--gold);color:var(--black);border:none;border-radius:2px;font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:1rem;cursor:pointer;margin-top:8px;transition:background 0.2s;">Get My Score & Free Guide</button>
+    </div>
+    <div id="assessmentResultDiv" class="hidden assess-result">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🎯</div>
+      <h4>Your Score: <span id="scoreVal">0</span>/3</h4>
+      <p id="scoreMsg" style="color:var(--muted);margin-bottom:16px;font-weight:300;"></p>
+      <button onclick="alert('✅ Guide downloaded successfully!'); closeAssessmentModal();" style="background:transparent;color:var(--gold);border:1px solid rgba(200,168,75,0.4);border-radius:2px;padding:0.7rem 1.5rem;font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:0.2s;">📥 Download Personalized Guide</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
