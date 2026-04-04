@@ -818,25 +818,21 @@ a:hover {
           <textarea id="f-message" placeholder="Tell us about your goals or any questions…"></textarea>
         </div>
                   <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:0.9rem;font-size:0.72rem;color:var(--muted);font-weight:300;"><input type="checkbox" id="dpa-form" required style="margin-top:3px;accent-color:var(--gold);"><label for="dpa-form">I agree to receive fitness updates & offers via SMS/email. Unsubscribe anytime. (Compliant with PH Data Privacy Act 2012)</label></div>
+                    <div style="margin-bottom:0.9rem;font-size:0.72rem;color:var(--muted);font-weight:300;font-family:Montserrat,sans-serif;line-height:1.5;">
+            🔒 <strong style="color:var(--light);">Data Privacy Notice:</strong> Your info is collected solely for fitness consultation and service delivery per RA 10173 (PH Data Privacy Act 2012). We never sell or share your data. <button onclick="this.nextElementSibling.classList.toggle('hidden');this.textContent=this.textContent==='View Full Policy'?'Hide Policy':'View Full Policy'" style="background:none;border:none;color:var(--gold);cursor:pointer;font-weight:600;padding:0;font-size:inherit;text-decoration:underline;">View Full Policy</button>
+            <div class="hidden" style="margin-top:0.7rem;font-size:0.7rem;color:var(--muted);line-height:1.7;">
+              <p><strong style="color:var(--light);">Data Controller:</strong> Irish Humang-it (iFitness Personal Training)</p>
+              <p><strong style="color:var(--light);">DPO:</strong> Irish Humang-it — irishchumangit@gmail.com</p>
+              <p><strong style="color:var(--light);">Purpose:</strong> Client onboarding, program customization, scheduling, progress tracking, marketing (opt-in only).</p>
+              <p><strong style="color:var(--light);">Retention:</strong> Duration of engagement + 12 months, then securely deleted.</p>
+              <p><strong style="color:var(--light);">Your Rights:</strong> Access, correct, suspend, or withdraw data under RA 10173. Email irishchumangit@gmail.com.</p>
+            </div>
+          </div>
           <button class="cf-submit" onclick="submitForm(this)">Book My Session</button>
       </div>
     </div>
   </div>
 </section>
-
-        <div class="privacy-section">
-          <h4>🔒 Data Privacy Notice</h4>
-          <p>Your personal information is collected solely for the purpose of fitness consultation, program enrollment, and service delivery. We comply with the <strong style="color:var(--light);">Republic Act No. 10173 (Data Privacy Act of 2012)</strong> of the Philippines. Your data will never be sold, shared, or distributed to third parties without your explicit consent. You may request access, correction, or deletion of your data at any time by contacting irishchumangit@gmail.com.</p>
-          <button onclick="this.nextElementSibling.classList.toggle("hidden");this.textContent=this.textContent==="Read Full Policy"?"Hide Policy":"Read Full Policy"" style="background:transparent;border:1px solid rgba(200,168,75,0.3);color:var(--gold);padding:0.4rem 0.9rem;border-radius:2px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;margin-top:0.7rem;font-family:Montserrat,sans-serif;transition:0.2s;">Read Full Policy</button>
-          <div class="hidden" style="margin-top:1rem;font-size:0.74rem;color:var(--muted);line-height:1.8;font-weight:300;">
-            <p><strong style="color:var(--light);">Data Controller:</strong> Irish Humang-it (iFitness Personal Training)</p>
-            <p><strong style="color:var(--light);">Data Protection Officer:</strong> Irish Humang-it — irishchumangit@gmail.com</p>
-            <p><strong style="color:var(--light);">Purpose of Processing:</strong> Client onboarding, program customization, scheduling, progress tracking, and marketing communications (opt-in only).</p>
-            <p><strong style="color:var(--light);">Data Retention:</strong> Client data is retained for the duration of the training engagement plus 12 months for follow-up, after which it is securely deleted unless you consent to longer retention.</p>
-            <p><strong style="color:var(--light);">Your Rights:</strong> Under RA 10173, you have the right to access, correct, suspend, or withdraw your personal data. To exercise these rights, email irishchumangit@gmail.com with "Data Privacy Request" in the subject line.</p>
-          </div>
-        </div>
-
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="foot-logo">i<span>Fitness</span></div>
@@ -861,11 +857,9 @@ a:hover {
     <div class="cb-msg">Hi there! 👋 Welcome to iFitness. I'm here to help. What are you interested in?</div>
   </div>
   <div class="cb-options" id="cb-options">
-    <button class="cb-opt" onclick="chatSelect('Personal Training')"><span class="cb-opt-icon">🏋️</span> Personal Training</button>
-    <button class="cb-opt" onclick="chatSelect('Taekwondo for Kids')"><span class="cb-opt-icon">🥋</span> Taekwondo for Kids</button>
-    <button class="cb-opt" onclick="chatSelect('Pricing & Packages')"><span class="cb-opt-icon">💰</span> Pricing & Packages</button>
-    <button class="cb-opt" onclick="chatSelect('Free Consultation')"><span class="cb-opt-icon">📅</span> Free Consultation</button>
-    <button class="cb-opt" onclick="chatSelect('Other')"><span class="cb-opt-icon">💬</span> Ask Something Else</button>
+    <button class="cb-opt" onclick="chatSelect('WhatsApp')"><span class="cb-opt-icon">📱</span> Send Details to My WhatsApp</button>
+    <button class="cb-opt" onclick="chatSelect('BMI Assessment')"><span class="cb-opt-icon">⚖️</span> Take Free BMI Assessment</button>
+    <button class="cb-opt" onclick="chatSelect('Calendly')"><span class="cb-opt-icon">📅</span> Book Free Consultation</button>
   </div>
   <div class="cb-typing" id="cb-typing">Irish is typing…</div>
   <div class="cb-input-row" id="cb-input-row" style="display:none">
@@ -900,6 +894,12 @@ function prefillForm(program){
 }
 
 /* ── Form Submit ── */
+function chatActionSelect(action){
+  if(action==='whatsapp'){window.open("https://wa.me/639612071923?text="+encodeURIComponent("Hi! I'd like to know more about iFitness personal training. Can you send me details?"),"_blank");chatClose();}
+  if(action==='bmi'){chatClose();openBMIAssessment();}
+  if(action==='calendly'){window.open("https://calendly.com/irishchumangit/30min","_blank");chatClose();}
+}
+
 function submitForm(btn){
   btn.textContent='Message Sent ✓';
   btn.style.background='var(--green)';
@@ -937,6 +937,9 @@ const chatData={
     next:['Take Me to the Form','Ask Something Else']
   },
   'Other':{msg:"Of course! Feel free to type your question below and Irish will get back to you within 24 hours. ✨",program:'',next:null},
+  'WhatsApp': {msg:"Click below to send us a message on WhatsApp! We'll reply with all the info you need.",action:'whatsapp'},
+  'BMI Assessment': {msg:"Ready to see where you're at? Let's do a quick BMI check - it only takes a minute.",action:'bmi'},
+  'Calendly': {msg:"Awesome! Let's book your free 30-minute consultation.",action:'calendly'},
   'Book Free Consultation':{msg:"Just fill out the inquiry form on this page and we'll be in touch within 24 hours. 📅",program:'Free Initial Consultation',next:['Got it, thanks!']},
   'More About Pricing':{msg:"• 6 sessions: ₱1,500/session (trial)\n• 12 sessions: ₱14,400 total\n• 24 sessions: ₱28,300 total\n\nAll packages include a fully customized 1-on-1 program.",program:'',next:['Book Now','Go Back']},
   'Enroll Now':{msg:"Awesome! 🥋 Please fill in the inquiry form and we'll reach out to confirm your slot and schedule.",program:'Taekwondo Children Home Class',next:['Got it!']},
@@ -1004,6 +1007,19 @@ function openAssessmentModal(){document.getElementById("assessmentModal").classL
 function closeAssessmentModal(){document.getElementById("assessmentModal").classList.remove("active");}
 let assScore=0;
 function selectAssessment(el,val){document.querySelectorAll(".assess-opt").forEach(function(o){o.classList.remove("selected")});el.classList.add("selected");assScore=val;}
+function openBMIAssessment(){document.getElementById("assessmentDiv").classList.remove("hidden");document.getElementById("assessmentDiv").style.display="block"}
+function closeBMIAssessment(){document.getElementById("assessmentDiv").classList.add("hidden");document.getElementById("assessmentDiv").style.display="none"}
+
+function calcBMI(){var h=parseFloat(document.getElementById("bmi-h").value);var w=parseFloat(document.getElementById("bmi-w").value);if(!h||!w){alert("Enter height and weight");return}var bmi=w/((h/100)*(h/100));document.getElementById("bmi-val").textContent=bmi.toFixed(1);var cat;
+if(bmi<18.5)cat="Underweight - Need healthy weight gain guidance.";
+else if(bmi<25)cat="Normal range - Great! We can optimise your fitness.";
+else if(bmi<30)cat="Overweight - Training plan can help.";
+else cat="Obesity - Safe progressive training recommended.";
+document.getElementById("bmi-msg").textContent=cat;
+document.getElementById("bmi-result").classList.remove("hidden");
+document.getElementById("bmi-result").style.display="block";}
+function unlockBMI(){var e=document.getElementById("bmi-email");if(!e||!e.value){alert("Enter your email to unlock");return}alert("Results unlocked! We'll email you at "+e.value);closeBMIAssessment();chatClose();}
+
 function submitAssessment(){var email=document.getElementById("assessEmail");if(!email||!email.value||!assScore){alert("Select option and enter email");return}document.getElementById("assessmentFormDiv").classList.add("hidden");document.getElementById("assessmentResultDiv").classList.remove("hidden");document.getElementById("scoreVal").textContent=assScore;var msgs={3:"You are already active! Advanced conditioning and sport-specific metrics.",2:"Solid baseline! Targeted mobility and strength work.",1:"Perfect starting point. Safe movement patterns and habit building."};document.getElementById("scoreMsg").textContent=msgs[assScore]||"Lets get started";}
 /* MERGED: Click outside to close */
 document.addEventListener("click",function(e){if(e.target.classList.contains("modal-overlay-merged")&&e.target.classList.contains("active")){e.target.classList.remove("active")}});
