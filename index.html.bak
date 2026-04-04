@@ -783,29 +783,32 @@ a:hover {
         </div>
       </div>
 
-      <div class="contact-form reveal">
-        <form id="inquiry-form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" onsubmit="return handleInquiry(event)"><p class="cf-title">SEND AN INQUIRY</p>
+      <div class="contact-form reveal" data-netlify="true">
+        <form name="inquiry" method="POST" data-netlify="true" onsubmit="handleNetlifySubmit(event)">
+        <input type="hidden" name="form-name" value="inquiry">
+        <p name="bot-field" style="display:none;"><label>Keep this field empty: <input name="bot-field"></label></p>
+        <p class="cf-title">SEND AN INQUIRY</p>
         <div class="cf-row">
           <div class="cf-group">
             <label>First Name</label>
-            <input type="text" id="f-fname" name="fname" placeholder="Juan">
+            <input type="text" id="f-fname" name="First Name" name="First Name" placeholder="Juan">
           </div>
           <div class="cf-group">
             <label>Last Name</label>
-            <input type="text" name="lname" placeholder="dela Cruz">
+            <input type="text" name="Last Name" placeholder="dela Cruz">
           </div>
         </div>
         <div class="cf-group">
           <label>Email</label>
-          <input type="email" name="email" placeholder="you@email.com">
+          <input type="email" name="Email" placeholder="you@email.com">
         </div>
         <div class="cf-group">
           <label>Contact Number</label>
-          <input type="tel" name="phone" placeholder="09XX XXX XXXX">
+          <input type="tel" name="Contact Number" placeholder="09XX XXX XXXX">
         </div>
         <div class="cf-group">
           <label>Program of Interest</label>
-          <select id="f-program" name="program">
+          <select id="f-program" name="Program">
             <option value="">Select a program…</option>
             <option>Personal Training — 6 Sessions (Trial)</option>
             <option>Personal Training — 12 Sessions</option>
@@ -816,10 +819,11 @@ a:hover {
         </div>
         <div class="cf-group">
           <label>Message (Optional)</label>
-          <textarea id="f-message" name="message" placeholder="Tell us about your goals or any questions…"></textarea>
+          <textarea id="f-message" name="Message" placeholder="Tell us about your goals or any questions…"></textarea>
         </div>
                   <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:0.9rem;font-size:0.72rem;color:var(--muted);font-weight:300;"><input type="checkbox" id="dpa-form" required style="margin-top:3px;accent-color:var(--gold);"><label for="dpa-form">I agree to receive fitness updates & offers via SMS/email. Unsubscribe anytime. (Compliant with PH Data Privacy Act 2012)</label></div>
-          <form id="inquiry" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" style="display:contents;" onsubmit="return submitInquiry(event)"></form><button class="cf-submit" type="submit">Book My Session</button></form>
+          <button class="cf-submit" type="submit">Book My Session</button>
+        </form>
       </div>
     </div>
   </div>
@@ -886,42 +890,28 @@ function prefillForm(program){
 }
 
 /* ── Form Submit ── */
-function handleInquiry(e){
-  var form=document.getElementById('inquiry-form');
-  var btn=form.querySelector('.cf-submit');
-  var formData=new FormData(form);
-  btn.textContent='Sending…';btn.disabled=true;
-  fetch(form.action,{method:'POST',body:formData,headers:{'Accept':'application/json'}})
-  .then(r=>{
-    if(!r.ok)throw new Error('Failed');
-    btn.textContent='Message Sent ✓';btn.style.background='var(--green)';
+function handleNetlifySubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.cf-submit');
+  const formData = new FormData(form);
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(formData).toString()
+  }).then(()=>{
+    btn.textContent='Message Sent ✓';
+    btn.style.background='var(--green)';
     form.reset();
     setTimeout(()=>{btn.textContent='Book My Session';btn.style.background='';btn.disabled=false},4000);
-  })
-  .catch(()=>{
-    var f=form;
-    var name=f.fname.value+' '+f.lname.value;
-    var em=f.email.value;
-    var ph=f.phone.value;
-    var pg=f.program.value;
-    var mg=f.message.value;
-    var s='Inquiry: '+encodeURIComponent(pg);
-    var b='Name: '+name+'\nEmail: '+em+'\nPhone: '+ph+'\nProgram: '+pg+'\n\nMessage:\n'+mg;
-    window.open('mailto:irishchumangit@gmail.com?subject='+s+'&body='+encodeURIComponent(b),'_self');
-    btn.textContent='Sent ✓';btn.style.background='var(--green)';
-    setTimeout(()=>{btn.textContent='Book My Session';btn.style.background='';btn.disabled=false},4000);
+  }).catch(err=>{
+    btn.textContent='Error — try again';
+    btn.style.background='var(--red)';
+    setTimeout(()=>{btn.textContent='Book My Session';btn.style.background='';btn.disabled=false},3000);
   });
-  return false;
 }
-
-/* OLD: was submitForm — replaced by handleInquiry
-function submitForm(btn){
-  btn.textContent='Message Sent ✓';
-  btn.style.background='var(--green)';
-  btn.disabled=true;
-  setTimeout(()=>{btn.textContent='Book My Session';btn.style.background='';btn.disabled=false},3500);
-}
-*/
 
 /* ── Chatbot ── */
 let chatOpen=false;
