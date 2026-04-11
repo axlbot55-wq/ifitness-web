@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>iFitness — Irish Humang-it | Personal Training & Taekwondo</title>
-<meta name="description" content="Elite 1-on-1 personal training and Taekwondo coaching by Irish Humang-it.">
+<meta name="description" content="Elite 1-on-1 personal training and Taekwondo coaching by Irish Humang-it in Mandaluyong City. Certified Gold's Gym Trainer. Black Belt Instructor. Book your free consultation today.">
 <meta property="og:title" content="iFitness — Irish Humang-it Personal Training">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Elite personal training & Taekwondo coaching by Irish Humang-it. Certified Gold's Gym Trainer. Black Belt Instructor.">
@@ -184,9 +184,27 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
 .modal-box h3{margin-bottom:16px;font-size:1.4rem;font-weight:800;color:var(--white)}
 .modal-box p{color:var(--muted);margin-bottom:20px;font-size:.9rem;font-weight:300;line-height:1.6}
 .hidden{display:none}
+.faq-grid{display:grid;gap:.75rem;margin-top:2.5rem;max-width:800px}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .3s}
+.faq-item:hover{border-color:rgba(200,168,75,.2)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;background:none;border:none;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;text-align:left;transition:color .3s}
+.faq-q:hover{color:var(--accent)}
+.faq-arrow{transition:transform .3s;color:var(--accent);font-size:.7rem}
+.faq-item.open .faq-arrow{transform:rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-a p{padding:0 1.5rem 1.2rem;color:var(--muted);font-size:.84rem;line-height:1.75;font-weight:300}
+.faq-item.open .faq-a{max-height:300px}
+.location-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;margin-top:2.5rem}
+.location-info{display:flex;flex-direction:column;gap:1rem}
+.loc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s}
+.loc-card:hover{border-color:rgba(200,168,75,.2)}
+.loc-icon{font-size:1.4rem;flex-shrink:0}
+.loc-card strong{color:var(--white);font-size:.82rem;display:block;margin-bottom:.2rem}
+.loc-card div:last-child{color:var(--muted);font-size:.8rem;font-weight:300;line-height:1.5}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.location-grid{grid-template-columns:1fr}.location-map iframe{height:250px}}
 @media(max-width:920px){.nav-links{display:none}.hamburger{display:flex}.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-img-wrap{max-width:320px;margin:0 auto}.pt-grid{grid-template-columns:1fr;max-width:420px}.online-grid{grid-template-columns:1fr}.tkd-layout{grid-template-columns:1fr;gap:2.5rem}.process-grid{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr;gap:3rem}.hero-stats{display:grid;grid-template-columns:1fr 1fr;position:relative;background:rgba(17,17,17,.8);border-top:1px solid rgba(200,168,75,.08);padding:1.5rem 5vw}.hero-stat{padding:.8rem;justify-content:center;text-align:center}.cf-row{grid-template-columns:1fr}.about-badge{right:0;bottom:-1rem}.hero-btns{flex-direction:column;gap:.75rem}.hero-btns .btn-primary,.hero-btns .btn-secondary{width:100%;text-align:center;justify-content:center;padding:1rem 1.5rem}.hero-content{padding:0 5vw;padding-top:90px;max-width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}.hero-sub{font-size:.95rem;line-height:1.9;max-width:100%}.whatsapp-fab{bottom:1.2rem;right:1.2rem;width:48px;height:48px;font-size:1.2rem}#chat-fab{bottom:5rem;right:1.2rem;width:48px;height:48px;font-size:1.1rem}}
 @media(max-width:600px){section{padding:4rem 5vw}.hero-h1{font-size:2.6rem}.hero-content{padding-top:90px}.ie-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr}#chatbox{width:calc(100vw - 1.5rem);right:.75rem;bottom:8.5rem;max-height:70vh}.modal-box{padding:24px 20px;margin:0 1rem;max-height:90vh;overflow-y:auto}.cb-opt{min-height:44px}.cred-grid{grid-template-columns:1fr}.hero-stats{grid-template-columns:1fr 1fr;gap:0}.hs-lbl{font-size:.58rem}.nav-logo{font-size:1.2rem}.whatsapp-fab{width:44px;height:44px;font-size:1rem;bottom:.8rem;right:.8rem}#chat-fab{width:44px;height:44px;font-size:1rem;bottom:4rem;right:.8rem}}
 </style>
@@ -202,7 +220,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
     <li><a href="#taekwondo">Taekwondo</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#testimonials">Results</a></li>
-    <li><a href="#contact" class="nav-cta">Book Session</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" class="nav-cta">Book Session</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -213,7 +233,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
   <a href="#taekwondo" onclick="closeMob()">Taekwondo</a>
   <a href="#process" onclick="closeMob()">How It Works</a>
   <a href="#testimonials" onclick="closeMob()">Results</a>
-  <a href="#contact" onclick="closeMob()" class="mob-cta">Book a Session</a>
+  <a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" onclick="closeMob()" class="mob-cta">Book a Session</a>
 </div>
 
 <section id="hero">
@@ -242,7 +262,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
   <div class="max">
     <div class="about-grid reveal">
       <div class="about-img-wrap">
-        <img class="about-img" src="assets/irish-coach.jpg" alt="Irish Humang-it">
+        <img class="about-img" src="assets/irish-coach.jpg" alt="Irish Humang-it, Certified Personal Trainer and Taekwondo Black Belt">
       </div>
       <div class="about-text">
         <div class="sec-eyebrow">Your Coach</div>
@@ -491,7 +511,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
         <div class="c-items">
           <div class="c-item">
             <div class="c-icon">📍</div>
-            <div><div class="c-lbl">Location</div><div class="c-val">Mandaluyong City, Metro Manila</div></div>
+            <div><div class="c-lbl">Location</div><div class="c-val">Gold's Gym, SM Megamall, Mandaluyong City<br><span style="font-size:.68rem;color:var(--muted)">Home sessions also available within Metro Manila</span></div></div>
           </div>
           <div class="c-item">
             <div class="c-icon">📱</div>
@@ -538,6 +558,69 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
           </div>
           <button type="submit" class="cf-submit">Send Inquiry →</button>
         </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="max">
+    <div class="reveal">
+      <div class="sec-eyebrow">Questions</div>
+      <h2 class="sec-title">Frequently <em>Asked</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need to be fit to start? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>Not at all. Every program is built around your current level. Whether you're a complete beginner or getting back into it after a break, Irish meets you where you are.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">What should I bring to my first session? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>Just comfortable workout clothes, a water bottle, and a towel. All equipment is provided at the gym. For home sessions, Irish brings what's needed.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I cancel or reschedule a session? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>Yes — just give at least 24 hours notice. Late cancellations (under 24 hours) may be counted as a completed session.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">Where are the in-person sessions held? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>Personal training sessions are held at Gold's Gym, SM Megamall in Mandaluyong City. Home sessions within Metro Manila can also be arranged. Taekwondo home classes come to you.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a free trial? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>You can book a free 30-minute initial consultation via Calendly to discuss your goals and see if it's the right fit. The 6-session package is also a great low-commitment way to try it out.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need equipment for online training? <span class="faq-arrow">→</span></button>
+        <div class="faq-a"><p>No. Online programs are designed to work with minimal or no equipment. Irish will adapt the workout to whatever you have available at home.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="max">
+    <div class="reveal">
+      <div class="sec-eyebrow">Find Us</div>
+      <h2 class="sec-title">Training <em>Location</em></h2>
+    </div>
+    <div class="location-grid reveal">
+      <div class="location-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.2!2d121.0564!3d14.5817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c7f09e21c1e1%3A0x53be4c5646e8c0e6!2sGold&#39;s%20Gym%20SM%20Megamall!5e0!3m2!1sen!2sph!4v1700000000000" width="100%" height="350" style="border:0;border-radius:var(--rl)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="location-info">
+        <div class="loc-card">
+          <div class="loc-icon">📍</div>
+          <div><strong>Gold's Gym SM Megamall</strong><br>Mandaluyong City, Metro Manila</div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-icon">🅿️</div>
+          <div><strong>Parking</strong><br>SM Megamall parking building (B1-B2)</div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-icon">🏠</div>
+          <div><strong>Home Sessions</strong><br>Available within Metro Manila</div>
+        </div>
       </div>
     </div>
   </div>
@@ -710,6 +793,8 @@ function submitFreePlan(){
   document.getElementById('freePlanEmailDiv').classList.add('hidden');
   document.getElementById('freePlanResultDiv').classList.remove('hidden');
 }
+
+function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open')}
 
 // Reveal on scroll
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1});
