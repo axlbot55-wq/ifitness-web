@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>iFitness — Irish Humang-it | Personal Training & Taekwondo</title>
-<meta name="description" content="Elite 1-on-1 personal training and Taekwondo coaching by Irish Humang-it in Ortigas, Metro Manila. Certified Gold's Gym Trainer. Black Belt Instructor. Book your free consultation today.">
+<title>iFitness — Irish Humang-it | Redesign</title>
+<meta name="description" content="Elite 1-on-1 personal training and Taekwondo coaching by Irish Humang-it.">
 <meta property="og:title" content="iFitness — Irish Humang-it Personal Training">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Elite personal training & Taekwondo coaching by Irish Humang-it. Certified Gold's Gym Trainer. Black Belt Instructor.">
@@ -37,12 +37,6 @@ nav.scrolled{height:56px;background:rgba(10,10,10,0.95)}
 .hero-bg-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80') center/cover no-repeat}.hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,10,10,.93) 38%,rgba(10,10,10,.55) 100%)}.hero-gradient{display:none}
 .hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 60% at 60% 40%,black 20%,transparent 70%)}
 .hero-content{position:relative;z-index:2;padding:0 6vw;max-width:850px;padding-top:72px}
-.hero-layout{display:flex;align-items:flex-start;gap:2rem}
-.hero-left{flex:1;max-width:520px}
-.hero-stats-inline{display:flex;flex-direction:column;gap:.5rem;min-width:140px;padding-top:.5rem}
-.hero-stat-card{background:rgba(200,168,75,.05);border:1px solid rgba(200,168,75,.1);border-radius:var(--r);padding:.9rem .7rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.25rem;transition:border-color .3s}.hero-stat-card:hover{border-color:rgba(200,168,75,.25)}
-.hs-icon2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:rgba(200,168,75,.12);border-radius:8px;margin:0 auto}.hs-icon2 svg{width:13px;height:13px;fill:var(--accent)}
-.hs-lbl2{font-size:.55rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text);line-height:1.3}
 .hero-chip{display:inline-flex;align-items:center;gap:.6rem;background:rgba(200,168,75,.08);border:1px solid rgba(200,168,75,.2);padding:.5rem 1.2rem;border-radius:100px;font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;animation:fadeUp .8s ease both}
 .hero-chip .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 .hero-h1{font-family:'Montserrat',sans-serif;font-size:clamp(3.2rem,9vw,7.5rem);font-weight:800;line-height:.88;letter-spacing:-.04em;color:var(--white);margin-bottom:1.8rem;animation:fadeUp .8s .1s ease both}
@@ -53,7 +47,10 @@ nav.scrolled{height:56px;background:rgba(10,10,10,0.95)}
 .btn-primary:hover{background:var(--accent-lt);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,168,75,.25)}
 .btn-secondary{background:transparent;color:var(--white);padding:1rem 2.4rem;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .3s}
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.hero-stats{display:none}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;background:rgba(17,17,17,.6);backdrop-filter:blur(20px);border-top:1px solid rgba(200,168,75,.08);animation:fadeUp .8s .5s ease both}
+.hero-stat{flex:1;padding:1.6rem 3vw;position:relative}.hero-stat:hover{background:rgba(200,168,75,.04)}
+.hero-stat:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.05)}
+.hs-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:rgba(200,168,75,.12);border-radius:8px;margin:0 auto .4rem}.hs-icon svg{width:14px;height:14px;fill:var(--accent)}.hs-lbl{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text);text-align:center}
 section{padding:8rem 6vw;position:relative}.max{max-width:1200px;margin:0 auto}
 .sec-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}.sec-eyebrow::before{content:'';width:30px;height:1px;background:var(--accent)}
 .sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;letter-spacing:-.03em;color:var(--white);line-height:1.05;margin-bottom:1.2rem}.sec-title em{font-family:'Libre Baskerville',serif;font-style:italic;color:var(--accent)}
@@ -187,29 +184,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
 .modal-box h3{margin-bottom:16px;font-size:1.4rem;font-weight:800;color:var(--white)}
 .modal-box p{color:var(--muted);margin-bottom:20px;font-size:.9rem;font-weight:300;line-height:1.6}
 .hidden{display:none}
-.faq-grid{display:grid;gap:.75rem;margin-top:2.5rem;max-width:800px}
-.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .3s}
-.faq-item:hover{border-color:rgba(200,168,75,.2)}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;background:none;border:none;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;text-align:left;transition:color .3s}
-.faq-q:hover{color:var(--accent)}
-.faq-arrow{transition:transform .3s;color:var(--accent);font-size:.7rem}
-.faq-item.open .faq-arrow{transform:rotate(90deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
-.faq-a p{padding:0 1.5rem 1.2rem;color:var(--muted);font-size:.84rem;line-height:1.75;font-weight:300}
-.faq-item.open .faq-a{max-height:300px}
-.location-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;margin-top:2.5rem}
-.location-info{display:flex;flex-direction:column;gap:1rem}
-.loc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s}
-.loc-card:hover{border-color:rgba(200,168,75,.2)}
-.loc-icon{font-size:1.4rem;flex-shrink:0}
-.loc-card strong{color:var(--white);font-size:.82rem;display:block;margin-bottom:.2rem}
-.loc-card div:last-child{color:var(--muted);font-size:.8rem;font-weight:300;line-height:1.5}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.location-grid{grid-template-columns:1fr}.location-map iframe{height:250px}}
-@media(max-width:920px){.nav-links{display:none}.hamburger{display:flex}.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-img-wrap{max-width:320px;margin:0 auto}.pt-grid{grid-template-columns:1fr;max-width:420px}.online-grid{grid-template-columns:1fr}.tkd-layout{grid-template-columns:1fr;gap:2.5rem}.process-grid{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr;gap:3rem}#hero{min-height:auto;padding-bottom:0}.hero-stats{display:grid;grid-template-columns:1fr 1fr;position:relative;background:rgba(17,17,17,.9);border-top:1px solid rgba(200,168,75,.08);padding:1rem 4vw;gap:.6rem}.hero-stat{padding:1.2rem .8rem;justify-content:center;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.4rem;background:rgba(200,168,75,.03);border-radius:var(--r);border:1px solid rgba(200,168,75,.06)}.hs-icon{width:36px;height:36px;border-radius:10px}.hs-icon svg{width:18px;height:18px}.hs-lbl{font-size:.62rem;letter-spacing:.04em;line-height:1.35}.cf-row{grid-template-columns:1fr}.about-badge{right:0;bottom:-1rem}.hero-btns{flex-direction:column;gap:.75rem}.hero-btns .btn-primary,.hero-btns .btn-secondary{width:100%;text-align:center;justify-content:center;padding:1rem 1.5rem}.hero-content{padding:0 5vw;padding-top:90px;max-width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}.hero-sub{font-size:.95rem;line-height:1.9;max-width:100%}.whatsapp-fab{bottom:1.2rem;right:1.2rem;width:48px;height:48px;font-size:1.2rem}#chat-fab{bottom:5rem;right:1.2rem;width:48px;height:48px;font-size:1.1rem}}
-@media(max-width:600px){section{padding:4rem 5vw}.hero-h1{font-size:2.6rem}.hero-content{padding-top:90px;padding-bottom:1rem}.ie-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr}#chatbox{width:calc(100vw - 1.5rem);right:.75rem;bottom:8.5rem;max-height:70vh}.modal-box{padding:24px 20px;margin:0 1rem;max-height:90vh;overflow-y:auto}.cb-opt{min-height:44px}.cred-grid{grid-template-columns:1fr}.hero-stat{min-width:100px;padding:.6rem .4rem}.hs-lbl{font-size:.55rem;letter-spacing:.02em;line-height:1.25}.hs-icon{width:28px;height:28px;margin-bottom:.2rem}.nav-logo{font-size:1.2rem}.whatsapp-fab{width:44px;height:44px;font-size:1rem;bottom:.8rem;right:.8rem}#chat-fab{width:44px;height:44px;font-size:1rem;bottom:4rem;right:.8rem}}
+@media(max-width:920px){.nav-links{display:none}.hamburger{display:flex}.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-img-wrap{max-width:320px;margin:0 auto}.pt-grid{grid-template-columns:1fr;max-width:420px}.online-grid{grid-template-columns:1fr}.tkd-layout{grid-template-columns:1fr;gap:2.5rem}.process-grid{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr;gap:3rem}.hero-stats{display:grid;grid-template-columns:1fr 1fr;position:relative;background:rgba(17,17,17,.8);border-top:1px solid rgba(200,168,75,.08);padding:1.5rem 5vw}.hero-stat{padding:.8rem;justify-content:center;text-align:center}.cf-row{grid-template-columns:1fr}.about-badge{right:0;bottom:-1rem}.hero-btns{flex-direction:column;gap:.75rem}.hero-btns .btn-primary,.hero-btns .btn-secondary{width:100%;text-align:center;justify-content:center;padding:1rem 1.5rem}.hero-content{padding:0 5vw;padding-top:90px;max-width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}.hero-sub{font-size:.95rem;line-height:1.9;max-width:100%}.whatsapp-fab{bottom:1.2rem;right:1.2rem;width:48px;height:48px;font-size:1.2rem}#chat-fab{bottom:5rem;right:1.2rem;width:48px;height:48px;font-size:1.1rem}}
+@media(max-width:600px){section{padding:4rem 5vw}.hero-h1{font-size:2.6rem}.hero-content{padding-top:90px}.ie-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr}#chatbox{width:calc(100vw - 1.5rem);right:.75rem;bottom:8.5rem;max-height:70vh}.modal-box{padding:24px 20px;margin:0 1rem;max-height:90vh;overflow-y:auto}.cb-opt{min-height:44px}.cred-grid{grid-template-columns:1fr}.hero-stats{grid-template-columns:1fr 1fr;gap:0}.hs-lbl{font-size:.58rem}.nav-logo{font-size:1.2rem}.whatsapp-fab{width:44px;height:44px;font-size:1rem;bottom:.8rem;right:.8rem}#chat-fab{width:44px;height:44px;font-size:1rem;bottom:4rem;right:.8rem}}
 </style>
 </head>
 <body>
@@ -223,9 +202,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
     <li><a href="#taekwondo">Taekwondo</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#testimonials">Results</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#location">Location</a></li>
-    <li><a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" class="nav-cta">Book Session</a></li>
+    <li><a href="#contact" class="nav-cta">Book Session</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -236,7 +213,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
   <a href="#taekwondo" onclick="closeMob()">Taekwondo</a>
   <a href="#process" onclick="closeMob()">How It Works</a>
   <a href="#testimonials" onclick="closeMob()">Results</a>
-  <a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" onclick="closeMob()" class="mob-cta">Book a Session</a>
+  <a href="#contact" onclick="closeMob()" class="mob-cta">Book a Session</a>
 </div>
 
 <section id="hero">
@@ -245,23 +222,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
   <div class="hero-grid-lines"></div>
   <div class="hero-content">
     <span class="hero-chip"><span class="dot"></span> Certified Gold's Gym Trainer · Taekwondo Black Belt</span>
-    <div class="hero-layout">
-      <div class="hero-left">
-        <h1 class="hero-h1">Train Hard.<br><em>Transform.</em></h1>
-        <p class="hero-sub">1-on-1 personal training coaching in Ortigas. Programs built around your goals — real results, real commitment.</p>
-        <div class="hero-btns">
-          <a href="#programs" class="btn-primary">View Programs →</a>
-          <a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" class="btn-secondary">Free Consultation</a>
-          <a href="https://wa.me/639612071923" target="_blank" rel="noopener" class="btn-secondary">Book a Call</a>
-        </div>
-      </div>
-      <div class="hero-stats-inline">
-        <div class="hero-stat-card"><div class="hs-icon2"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22 14.86 20.57 16.29 22 18.43 19.86 19.86 21.29 21.29 19.86l-1.43-1.43L21.29 16.29z"/></svg></div><div class="hs-lbl2">Personalized Workouts</div></div>
-        <div class="hero-stat-card"><div class="hs-icon2"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="hs-lbl2">Real-time Adjustments</div></div>
-        <div class="hero-stat-card"><div class="hs-icon2"><svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.6c0 1.96-1.29 3.54-3.24 3.54S7.76 7.23 7.76 5.27l.03-.36C5.77 7.51 4.5 10.12 4.5 13c0 4.14 3.36 7.5 7.5 7.5s7.5-3.36 7.5-7.5C19.5 8.17 17.09 3.29 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.06-2.77 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.28.59 2.63.59 3.97 0 2.6-2.14 4.87-4.8 4.87z"/></svg></div><div class="hs-lbl2">Enhanced Motivation</div></div>
-        <div class="hero-stat-card"><div class="hs-icon2"><svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div><div class="hs-lbl2">Quicker Results</div></div>
-      </div>
+    <h1 class="hero-h1">Train Hard.<br><em>Transform.</em></h1>
+    <p class="hero-sub">1-on-1 personal training coaching in Mandaluyong City. Programs built around your goals — real results, real commitment.</p>
+    <div class="hero-btns">
+      <a href="#programs" class="btn-primary">View Programs →</a>
+      <a href="#contact" class="btn-secondary">Free Consultation</a>
+      <a href="https://calendly.com/irishchumangit/30min" target="_blank" rel="noopener" class="btn-secondary">Book a Call</a>
     </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hs-icon"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22 14.86 20.57 16.29 22 18.43 19.86 19.86 21.29 21.29 19.86l-1.43-1.43L21.29 16.29z"/></svg></div><div class="hs-lbl">Personalized Workouts</div></div>
+    <div class="hero-stat"><div class="hs-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="hs-lbl">Real-time Adjustments</div></div>
+    <div class="hero-stat"><div class="hs-icon"><svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.6c0 1.96-1.29 3.54-3.24 3.54S7.76 7.23 7.76 5.27l.03-.36C5.77 7.51 4.5 10.12 4.5 13c0 4.14 3.36 7.5 7.5 7.5s7.5-3.36 7.5-7.5C19.5 8.17 17.09 3.29 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.06-2.77 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.28.59 2.63.59 3.97 0 2.6-2.14 4.87-4.8 4.87z"/></svg></div><div class="hs-lbl">Enhanced Motivation</div></div>
+    <div class="hero-stat"><div class="hs-icon"><svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div><div class="hs-lbl">Quicker Results</div></div>
   </div>
 </section>
 
@@ -269,7 +242,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
   <div class="max">
     <div class="about-grid reveal">
       <div class="about-img-wrap">
-        <img class="about-img" src="assets/irish-coach.jpg" alt="Irish Humang-it, Certified Personal Trainer and Taekwondo Black Belt">
+        <img class="about-img" src="assets/irish-coach.jpg" alt="Irish Humang-it">
       </div>
       <div class="about-text">
         <div class="sec-eyebrow">Your Coach</div>
@@ -299,7 +272,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
         <p class="pt-name">6 Sessions Package</p>
         <p class="pt-sublabel">Trial · Flexible Entry</p>
         <div class="pt-price"><sup>₱</sup>1,500</div>
-        <div class="pt-price-note">per session · ₱9,000 total</div>
+        <div class="pt-price-note">per session</div>
         <div class="pt-divider"></div>
         <p class="pt-desc">Perfect for first-time clients who want to experience personalized coaching before committing to a full program.</p>
         <a href="#contact" class="pt-btn pt-btn-outline" onclick="prefillForm('Personal Training — 6 Sessions')">Start Now →</a>
@@ -322,8 +295,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
         <p class="pt-name">24 Sessions Package</p>
         <p class="pt-sublabel">Long-Term Transformation</p>
         <div class="pt-price-old">₱36,000</div>
-        <div class="pt-price"><sup>₱</sup>28,800</div>
-        <div class="pt-price-note">total · save ₱7,200</div>
+        <div class="pt-price"><sup>₱</sup>28,300</div>
+        <div class="pt-price-note">total · save ₱7,700</div>
         <div class="pt-divider"></div>
         <p class="pt-desc">The premier package for clients committed to real, lasting results. Maximum sessions, maximum transformation.</p>
         <a href="#contact" class="pt-btn pt-btn-outline" onclick="prefillForm('Personal Training — 24 Sessions')">Start Now →</a>
@@ -437,7 +410,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
         <div class="proc-num">01</div>
         <div class="proc-tag">Step 1</div>
         <h3 class="proc-title">Pre-Screening & PAR-Q</h3>
-        <p class="proc-body">Every client completes a PAR-Q (Physical Activity Readiness Questionnaire) — a standard health screening that identifies any conditions requiring medical clearance before training begins.</p>
+        <p class="proc-body">Every client completes a Physical Activity Readiness Questionnaire to identify health conditions and ensure your program is built safely.</p>
       </div>
       <div class="proc-card reveal">
         <div class="proc-num">02</div>
@@ -518,11 +491,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
         <div class="c-items">
           <div class="c-item">
             <div class="c-icon">📍</div>
-            <div><div class="c-lbl">Location</div><div class="c-val">Gold's Gym, Robinsons Galleria, Ortigas<br><span style="font-size:.68rem;color:var(--muted)">Home sessions also available within Metro Manila</span></div></div>
+            <div><div class="c-lbl">Location</div><div class="c-val">Mandaluyong City, Metro Manila</div></div>
           </div>
           <div class="c-item">
             <div class="c-icon">📱</div>
-            <div><div class="c-lbl">Phone</div><div class="c-val"><a href="tel:+639612071923">+63 961 207 1923</a></div></div>
+            <div><div class="c-lbl">Phone</div><div class="c-val"><a href="tel:+639171234567">+63 917 123 4567</a></div></div>
           </div>
           <div class="c-item">
             <div class="c-icon">✉️</div>
@@ -565,69 +538,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5r
           </div>
           <button type="submit" class="cf-submit">Send Inquiry →</button>
         </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="max">
-    <div class="reveal">
-      <div class="sec-eyebrow">Questions</div>
-      <h2 class="sec-title">Frequently <em>Asked</em></h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Do I need to be fit to start? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>Not at all. Every program is built around your current level. Whether you're a complete beginner or getting back into it after a break, Irish meets you where you are.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">What should I bring to my first session? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>Just comfortable workout clothes, a water bottle, and a towel. All equipment is provided at the gym. For home sessions, Irish brings what's needed.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I cancel or reschedule a session? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>Yes — just give at least 24 hours notice. Late cancellations (under 24 hours) may be counted as a completed session.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Where are the in-person sessions held? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>Personal training sessions are held at Gold's Gym, Robinsons Galleria in Ortigas. Home sessions within Metro Manila can also be arranged. Taekwondo home classes come to you.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Is there a free trial? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>You can book a free 30-minute initial consultation via Calendly to discuss your goals and see if it's the right fit. The 6-session package is also a great low-commitment way to try it out.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Do I need equipment for online training? <span class="faq-arrow">→</span></button>
-        <div class="faq-a"><p>No. Online programs are designed to work with minimal or no equipment. Irish will adapt the workout to whatever you have available at home.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="location">
-  <div class="max">
-    <div class="reveal">
-      <div class="sec-eyebrow">Find Us</div>
-      <h2 class="sec-title">Training <em>Location</em></h2>
-    </div>
-    <div class="location-grid reveal">
-      <div class="location-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.0!2d121.0586!3d14.5882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c8a1b1b1b1b1%3A0x1234567890abcdef!2sGold%27s%20Gym%20Robinsons%20Galleria!5e0!3m2!1sen!2sph!4v1700000000000" width="100%" height="350" style="border:0;border-radius:var(--rl)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="location-info">
-        <div class="loc-card">
-          <div class="loc-icon">📍</div>
-          <div><strong>Gold's Gym Robinsons Galleria</strong><br>Ortigas Ave, Quezon City</div>
-        </div>
-        <div class="loc-card">
-          <div class="loc-icon">🅿️</div>
-          <div><strong>Parking</strong><br>Robinsons Galleria parking (B1-B2)</div>
-        </div>
-        <div class="loc-card">
-          <div class="loc-icon">🏠</div>
-          <div><strong>Home Sessions</strong><br>Available within Metro Manila</div>
-        </div>
       </div>
     </div>
   </div>
@@ -800,8 +710,6 @@ function submitFreePlan(){
   document.getElementById('freePlanEmailDiv').classList.add('hidden');
   document.getElementById('freePlanResultDiv').classList.remove('hidden');
 }
-
-function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open')}
 
 // Reveal on scroll
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1});
